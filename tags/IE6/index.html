@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Zack&#39;s Blog</title>
+  <title>IE6 | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
   
   
@@ -43,7 +43,11 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
+<h2 class="archive-title tag">IE6</h2>
+
+
+  
+    <article class="post">
   
   <div class="post-content">
     <header>
@@ -95,148 +99,14 @@
 
 
 
-
-  <article class="photo">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      
-        <img src="http://static.oschina.net/uploads/space/2013/1031/180742_QoOW_147691.jpg">
-      
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-09-29T08:48:41.000Z"><a href="/2014/09/29/github-logo/">9月 29 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/09/29/github-logo/">github-logo</a></h1>
   
 
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-09-29T05:34:41.000Z"><a href="/2014/09/29/dom-node-change-event/">9月 29 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/09/29/dom-node-change-event/">JavaScript DOM 结构变化事件</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近写插件的时候, 遇到了一些html内容可能被ajax动态改变的情况.</p>
-<p>比如图片轮播, 图片是由ajax异步加入的, 而这段ajax代码是后台开发那边写的.</p>
-<p>也就是在我写的插件初始化之后, 图片才会加进来, 而且内容还可能动态变化.</p>
-<p>于是在我插件中监听子元素节点的变化, 然后refresh插件的参数.</p>
-<p>具体事件如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeInserted'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMAttrModified'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeRemoved'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>)</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-09-29T02:20:52.000Z"><a href="/2014/09/29/hello-world/">9月 29 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/09/29/hello-world/">Hello World</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-<nav id="pagination">
+  <nav id="pagination">
   
   
   <div class="clearfix"></div>
-</nav></div></div>
+</nav>
+</div></div>
     <aside id="sidebar" class="alignright">
   
 <div class="widget tag">

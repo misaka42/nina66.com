@@ -47,6 +47,59 @@
 
 
   
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-09-29T08:52:46.000Z"><a href="/2014/09/29/fix-ie6-ie7-inlineblock-bug/">9月 29 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/09/29/fix-ie6-ie7-inlineblock-bug/">解决 IE6/7 下 inline-block 不兼容问题</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">display</span><span class="pseudo">:inline-block</span></div></pre></td></tr></table></figure>
+
+<p><strong>在IE6/IE7下有兼容问题, 具体如下:</strong></p>
+<ul>
+<li><p>inline元素的display属性设置为inline-block时，所有的浏览器都支持；</p>
+</li>
+<li><p>block元素的display属性设置为inline-block时，IE6/IE7浏览器是不支持的；</p>
+</li>
+</ul>
+<p><strong>那么在IE6下块元素如何实现display:inline-block的效果?</strong></p>
+<p>有两种方法:</p>
+<ul>
+<li>先使用display:inline-block属性触发块元素,然后再定义display:inline,让块元素呈递为内联对象,<br>两个display要先后放在两个CSS声明中才有效果，这是IE的一个经典bug，如果先定义了display:inline-block，<br>然后再将display设回 inline或block，layout不会消失.</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span> <span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;<span class="rule">}</span></span> </div><div class="line"><span class="tag">div</span> <span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value"> inline</span></span>;<span class="rule">}</span></span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>直接让块元素设置为内联对象呈递,设置属性display:inline,然后触发块元素的layout,如:zoom:1 或float属性等.</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; <span class="rule"><span class="attribute">_zoom</span>:<span class="value"><span class="number">1</span></span></span>; <span class="rule"><span class="attribute">_display</span>:<span class="value">inline</span></span>;<span class="rule">}</span></span> <span class="comment">/*推荐*/</span></div><div class="line"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; <span class="rule"><span class="attribute">_zoom</span>:<span class="value"><span class="number">1</span></span></span>; <span class="rule">*<span class="attribute">display</span>:<span class="value">inline</span></span>;<span class="rule">}</span></span> <span class="comment">/*推荐:IE67*/</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article class="photo">
   
     <div class="gallery">
@@ -148,8 +201,7 @@
     </header>
     <div class="entry">
       
-        <p>测试11</p>
-<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick_Start">Quick Start</h2>
 <h3 id="Create_a_new_post">Create a new post</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -196,7 +248,7 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/前端开发/">前端开发</a><small>1</small></li>
+    <li><a href="/categories/前端开发/">前端开发</a><small>2</small></li>
   
   </ul>
 </div>
@@ -207,9 +259,17 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
+    <li><a href="/tags/CSS/">CSS</a><small>1</small></li>
+  
+    <li><a href="/tags/IE-Hack/">IE Hack</a><small>1</small></li>
+  
+    <li><a href="/tags/IE6/">IE6</a><small>1</small></li>
+  
+    <li><a href="/tags/IE7/">IE7</a><small>1</small></li>
+  
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/前端/">前端</a><small>1</small></li>
+    <li><a href="/tags/前端/">前端</a><small>2</small></li>
   
     <li><a href="/tags/配图/">配图</a><small>1</small></li>
   
