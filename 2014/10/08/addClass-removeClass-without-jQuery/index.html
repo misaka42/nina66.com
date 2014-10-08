@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JavaScript DOM 结构变化事件 | Zack&#39;s Blog</title>
+  <title>使用原生JavaScript实现addClass和removeClass | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
   
-  <meta name="description" content="最近写插件的时候, 遇到了一些html内容可能被ajax动态改变的情况.
-比如图片轮播, 图片是由ajax异步加入的, 而这段ajax代码是后台开发那边写的.
-也就是在我写的插件初始化之后, 图片才会加进来, 而且内容还可能动态变化.
-于是在我插件中监听子元素节点的变化, 然后refresh插件的参">
+  <meta name="description" content="有时候写一些小插件, 没必要引入日益臃肿的jQuery.
+addClass
+12345var addClass = function(elem, className) {	if (!hasClass(elem, className)) {	  elem.className += &#39; &#39; + clas">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="JavaScript DOM 结构变化事件"/>
+  <meta property="og:title" content="使用原生JavaScript实现addClass和removeClass"/>
   <meta property="og:site_name" content="Zack&#39;s Blog"/>
 
   
@@ -57,23 +56,21 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-09-29T05:34:41.000Z"><a href="/2014/09/29/dom-node-change-event/">9月 29 2014</a></time>
+        <time datetime="2014-10-08T09:42:15.000Z"><a href="/2014/10/08/addClass-removeClass-without-jQuery/">10月 8 2014</a></time>
       
       
   
-    <h1 class="title">JavaScript DOM 结构变化事件</h1>
+    <h1 class="title">使用原生JavaScript实现addClass和removeClass</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>最近写插件的时候, 遇到了一些html内容可能被ajax动态改变的情况.</p>
-<p>比如图片轮播, 图片是由ajax异步加入的, 而这段ajax代码是后台开发那边写的.</p>
-<p>也就是在我写的插件初始化之后, 图片才会加进来, 而且内容还可能动态变化.</p>
-<p>于是在我插件中监听子元素节点的变化, 然后refresh插件的参数.</p>
-<p>具体事件如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeInserted'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMAttrModified'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeRemoved'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>)</div></pre></td></tr></table></figure>
+        <p>有时候写一些小插件, 没必要引入日益臃肿的jQuery.</p>
+<p><strong>addClass</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> addClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">	<span class="keyword">if</span> (!hasClass(elem, className)) {</div><div class="line">	  elem.className += <span class="string">' '</span> + className;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
 
+<p><strong>removeClass</strong><br>```javascript<br>var removeClass = function(elem, className) {<br>    var newClass = ‘ ‘ + elem.className.replace(/[\t\r\n]/g, ‘ ‘) + ‘ ‘;<br>    if (hasClass(elem, className)) {<br>        while (newClass.indexOf(‘ ‘ + className + ‘ ‘) &gt;= 0) {<br>            newClass = newClass.replace(‘ ‘ + className + ‘ ‘, ‘ ‘);<br>        }<br>        elem.className = newClass.replace(/^\s+|\s+$/g, ‘’);<br>    }<br>}</p>
 
       
     </div>
@@ -88,7 +85,7 @@
         
   
   <div class="tags">
-    <a href="/tags/JavaScript/">JavaScript</a>, <a href="/tags/前端/">前端</a>
+    <a href="/tags/JavaScript/">JavaScript</a>
   </div>
 
         
@@ -111,7 +108,7 @@
 <section id="comment">
   <h1 class="title">留言</h1>
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="JavaScript DOM 结构变化事件" data-title="JavaScript DOM 结构变化事件" data-url="http://pengpeiqiao.tk/2014/09/29/dom-node-change-event/"></div>
+  <div class="ds-thread" data-thread-key="使用原生JavaScript实现addClass和removeClass" data-title="使用原生JavaScript实现addClass和removeClass" data-url="http://pengpeiqiao.tk/2014/10/08/addClass-removeClass-without-jQuery/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

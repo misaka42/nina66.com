@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JavaScript | Zack&#39;s Blog</title>
+  <title>归档：2014/10 | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
   
   
@@ -47,7 +47,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">JavaScript</h2>
+<h2 class="archive-title">2014/10</h2>
 
 
   
@@ -72,45 +72,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> addClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">	<span class="keyword">if</span> (!hasClass(elem, className)) {</div><div class="line">	  elem.className += <span class="string">' '</span> + className;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p><strong>removeClass</strong><br>```javascript<br>var removeClass = function(elem, className) {<br>    var newClass = ‘ ‘ + elem.className.replace(/[\t\r\n]/g, ‘ ‘) + ‘ ‘;<br>    if (hasClass(elem, className)) {<br>        while (newClass.indexOf(‘ ‘ + className + ‘ ‘) &gt;= 0) {<br>            newClass = newClass.replace(‘ ‘ + className + ‘ ‘, ‘ ‘);<br>        }<br>        elem.className = newClass.replace(/^\s+|\s+$/g, ‘’);<br>    }<br>}</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-09-29T05:34:41.000Z"><a href="/2014/09/29/dom-node-change-event/">9月 29 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/09/29/dom-node-change-event/">JavaScript DOM 结构变化事件</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近写插件的时候, 遇到了一些html内容可能被ajax动态改变的情况.</p>
-<p>比如图片轮播, 图片是由ajax异步加入的, 而这段ajax代码是后台开发那边写的.</p>
-<p>也就是在我写的插件初始化之后, 图片才会加进来, 而且内容还可能动态变化.</p>
-<p>于是在我插件中监听子元素节点的变化, 然后refresh插件的参数.</p>
-<p>具体事件如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeInserted'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMAttrModified'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMNodeRemoved'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{alert(<span class="number">1</span>)},<span class="literal">false</span>)</div></pre></td></tr></table></figure>
-
 
       
     </div>
