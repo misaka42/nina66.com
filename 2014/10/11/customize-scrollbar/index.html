@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2014/10 | Zack&#39;s Blog</title>
+  <title>自定义滚动条样式插件customize-scrollbar | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
+  
+  <meta name="description" content="发现网上大部分jQuery自定义滚动条样式的插件都不支持IE6, 而我们项目缺经常有类似需求,
+于是自己写了个customize-scrollbar插件, 开源到了Github,
+项目地址: https://github.com/ppq1991/customize-scrollbar
+项目主页: h">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="自定义滚动条样式插件customize-scrollbar"/>
   <meta property="og:site_name" content="Zack&#39;s Blog"/>
 
   
@@ -46,12 +51,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014/10</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
     <div class="gallery">
   <div class="photoset">
@@ -75,7 +75,7 @@
       
       
   
-    <h1 class="title"><a href="/2014/10/11/customize-scrollbar/">自定义滚动条样式插件customize-scrollbar</a></h1>
+    <h1 class="title">自定义滚动条样式插件customize-scrollbar</h1>
   
 
     </header>
@@ -91,7 +91,27 @@
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/categories/jQuery插件/">jQuery插件</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/jQuery插件/">jQuery插件</a>, <a href="/tags/滚动条/">滚动条</a>, <a href="/tags/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+    
+    
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -99,53 +119,26 @@
 </article>
 
 
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="自定义滚动条样式插件customize-scrollbar" data-title="自定义滚动条样式插件customize-scrollbar" data-url="http://pengpeiqiao.tk/2014/10/11/customize-scrollbar/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zack"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-10-08T09:42:15.000Z"><a href="/2014/10/08/addClass-removeClass-without-jQuery/">10月 8 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/10/08/addClass-removeClass-without-jQuery/">使用原生JavaScript实现addClass和removeClass</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>有时候写一些小插件, 没必要引入日益臃肿的jQuery, 下面的写法就够用了.</p>
-<p><strong>addClass</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> addClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (!hasClass(elem, className)) {</div><div class="line">      elem.className += <span class="string">' '</span> + className;</div><div class="line">    }</div><div class="line">  }</div></pre></td></tr></table></figure>
-
-<p><strong>removeClass</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> removeClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">  <span class="keyword">var</span> newClass = <span class="string">' '</span> + elem.className.replace(<span class="regexp">/[\t\r\n]/g</span>, <span class="string">' '</span>) + <span class="string">' '</span>;</div><div class="line">  <span class="keyword">if</span> (hasClass(elem, className)) {</div><div class="line">    <span class="keyword">while</span> (newClass.indexOf(<span class="string">' '</span> + className + <span class="string">' '</span>) &gt;= <span class="number">0</span>) {</div><div class="line">      newClass = newClass.replace(<span class="string">' '</span> + className + <span class="string">' '</span>, <span class="string">' '</span>);</div><div class="line">    }</div><div class="line">    elem.className = newClass.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   
