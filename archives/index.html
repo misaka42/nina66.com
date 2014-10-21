@@ -53,6 +53,94 @@
   
     <article class="post">
   
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-21T05:43:47.000Z"><a href="/2014/10/21/javascript-priceple-1/">10月 21 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/21/javascript-priceple-1/">JavaScript代码规范(一):事件监听</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="在处理监听事件时提高性能的一些小贴士">在处理监听事件时提高性能的一些小贴士</h3>
+<p><strong>将耗时操作放在事件外</strong><br>原代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="keyword">var</span> width = b.width();</div><div class="line">	<span class="comment">//do something</span></div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>改进后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> width = b.width();</div><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="comment">//do something</span></div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>尽量不要在事件处理方法内加入耗时操作，能移到外部处理的尽量移到外部，内部只放核心逻辑代码。</p>
+<p><strong>不要在监听处理方法内再放入其它监听</strong><br>这甚至不是一个低效的写法，而直接是一个<strong>完全错误</strong>的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="comment">//do something</span></div><div class="line">	a.mousedown(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">		<span class="comment">//do something</span></div><div class="line">	});</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>这样会导致每次触发<code>mousemove</code>时，都会额外给a元素再绑定一个<code>mousedown</code>处理事件，这样的代码简直是灾难。</p>
+<p>正确的做法应该是这样:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _isDown = <span class="literal">false</span>;_</div><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">if</span>(_isDown){</div><div class="line">        <span class="comment">//do something</span></div><div class="line">    }</div><div class="line">});</div><div class="line">a.mousedown(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    _isDown = <span class="literal">true</span>;</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>利用一个参数来传递状态，尽量不要为一个元素的某个事件绑定多个处理方法。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-21T05:43:47.000Z"><a href="/2014/10/21/javascript-priceple-0/">10月 21 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/21/javascript-priceple-0/">JavaScript代码规范(序)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><strong>JavaScript代码规范</strong> 系列是我在工作和学习中，积累下来的一些想法，主要是有关：</p>
+<ul>
+<li>提高JavaScript性能</li>
+<li>规范JavaScript设计</li>
+<li>提高JavaScript可读性</li>
+<li>避免常见错误</li>
+</ul>
+<p>如果你有好想法或者建议，可以在本页留言，我们共同探讨。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
     <div class="gallery">
   <div class="photoset">
     
@@ -341,6 +429,8 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/JavaScript代码规范/">JavaScript代码规范</a><small>2</small></li>
+  
     <li><a href="/categories/jQuery插件/">jQuery插件</a><small>1</small></li>
   
     <li><a href="/categories/前端开发/">前端开发</a><small>3</small></li>
@@ -362,7 +452,7 @@
   
     <li><a href="/tags/IE7/">IE7</a><small>1</small></li>
   
-    <li><a href="/tags/JavaScript/">JavaScript</a><small>3</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>5</small></li>
   
     <li><a href="/tags/jQuery插件/">jQuery插件</a><small>1</small></li>
   

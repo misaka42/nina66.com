@@ -3,13 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>IE Hack | Zack&#39;s Blog</title>
+  <title>JavaScript代码规范(序) | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
+  
+  <meta name="description" content="JavaScript代码规范 系列是我在工作和学习中，积累下来的一些想法，主要是有关：
+
+提高JavaScript性能
+规范JavaScript设计
+提高JavaScript可读性
+避免常见错误
+
+如果你有好想法或者建议，可以在本页留言，我们共同探讨。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="JavaScript代码规范(序)"/>
   <meta property="og:site_name" content="Zack&#39;s Blog"/>
 
   
@@ -46,55 +55,57 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">IE Hack</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-09-29T08:52:46.000Z"><a href="/2014/09/29/fix-ie6-ie7-inlineblock-bug/">9月 29 2014</a></time>
+        <time datetime="2014-10-21T05:43:47.000Z"><a href="/2014/10/21/javascript-priceple-0/">10月 21 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/2014/09/29/fix-ie6-ie7-inlineblock-bug/">解决 IE6/7 下 inline-block 不兼容问题</a></h1>
+    <h1 class="title">JavaScript代码规范(序)</h1>
   
 
     </header>
     <div class="entry">
       
-        <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">display</span><span class="pseudo">:inline-block</span></div></pre></td></tr></table></figure>
-
-<p><strong>在IE6/IE7下有兼容问题, 具体如下:</strong></p>
+        <p><strong>JavaScript代码规范</strong> 系列是我在工作和学习中，积累下来的一些想法，主要是有关：</p>
 <ul>
-<li><p>inline元素的display属性设置为inline-block时，所有的浏览器都支持；</p>
-</li>
-<li><p>block元素的display属性设置为inline-block时，IE6/IE7浏览器是不支持的；</p>
-</li>
+<li>提高JavaScript性能</li>
+<li>规范JavaScript设计</li>
+<li>提高JavaScript可读性</li>
+<li>避免常见错误</li>
 </ul>
-<p><strong>那么在IE6下块元素如何实现display:inline-block的效果?</strong></p>
-<p>有两种方法:</p>
-<ul>
-<li>先使用display:inline-block属性触发块元素,然后再定义display:inline,让块元素呈递为内联对象,<br>两个display要先后放在两个CSS声明中才有效果，这是IE的一个经典bug，如果先定义了display:inline-block，<br>然后再将display设回 inline或block，layout不会消失.</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span> <span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;<span class="rule">}</span></span> </div><div class="line"><span class="tag">div</span> <span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value"> inline</span></span>;<span class="rule">}</span></span></div></pre></td></tr></table></figure>
-
-<ul>
-<li>直接让块元素设置为内联对象呈递,设置属性display:inline,然后触发块元素的layout,如:zoom:1 或float属性等.</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; <span class="rule"><span class="attribute">_zoom</span>:<span class="value"><span class="number">1</span></span></span>; <span class="rule"><span class="attribute">_display</span>:<span class="value">inline</span></span>;<span class="rule">}</span></span> <span class="comment">/*推荐*/</span></div><div class="line"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; <span class="rule"><span class="attribute">_zoom</span>:<span class="value"><span class="number">1</span></span></span>; <span class="rule">*<span class="attribute">display</span>:<span class="value">inline</span></span>;<span class="rule">}</span></span> <span class="comment">/*推荐:IE67*/</span></div></pre></td></tr></table></figure>
-
+<p>如果你有好想法或者建议，可以在本页留言，我们共同探讨。</p>
 
       
     </div>
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/categories/JavaScript代码规范/">JavaScript代码规范</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+    
+    
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -102,14 +113,26 @@
 </article>
 
 
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="JavaScript代码规范(序)" data-title="JavaScript代码规范(序)" data-url="http://pengpeiqiao.tk/2014/10/21/javascript-priceple-0/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zack"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
 
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   

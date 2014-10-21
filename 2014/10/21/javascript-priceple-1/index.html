@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用原生JavaScript实现addClass和removeClass | Zack&#39;s Blog</title>
+  <title>JavaScript代码规范(一):事件监听 | Zack&#39;s Blog</title>
   <meta name="author" content="Zack">
   
-  <meta name="description" content="有时候写一些小插件, 没必要引入日益臃肿的jQuery, 下面的写法就够用了.
-addClass
-12345var addClass = function(elem, className) {    if (!hasClass(elem, className)) {      elem.classN">
+  <meta name="description" content="在处理监听事件时提高性能的一些小贴士
+将耗时操作放在事件外原代码
+1234a.mousemove(function(){	var width = b.width();	//do something});
+
+改进后
+1234var width = b.width();a.mousemove(funct">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="使用原生JavaScript实现addClass和removeClass"/>
+  <meta property="og:title" content="JavaScript代码规范(一):事件监听"/>
   <meta property="og:site_name" content="Zack&#39;s Blog"/>
 
   
@@ -56,23 +59,32 @@ addClass
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-08T09:42:15.000Z"><a href="/2014/10/08/addClass-removeClass-without-jQuery/">10月 8 2014</a></time>
+        <time datetime="2014-10-21T05:43:47.000Z"><a href="/2014/10/21/javascript-priceple-1/">10月 21 2014</a></time>
       
       
   
-    <h1 class="title">使用原生JavaScript实现addClass和removeClass</h1>
+    <h1 class="title">JavaScript代码规范(一):事件监听</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>有时候写一些小插件, 没必要引入日益臃肿的jQuery, 下面的写法就够用了.</p>
-<p><strong>addClass</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> addClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (!hasClass(elem, className)) {</div><div class="line">      elem.className += <span class="string">' '</span> + className;</div><div class="line">    }</div><div class="line">  }</div></pre></td></tr></table></figure>
+        <h3 id="在处理监听事件时提高性能的一些小贴士">在处理监听事件时提高性能的一些小贴士</h3>
+<p><strong>将耗时操作放在事件外</strong><br>原代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="keyword">var</span> width = b.width();</div><div class="line">	<span class="comment">//do something</span></div><div class="line">});</div></pre></td></tr></table></figure>
 
-<p><strong>removeClass</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> removeClass = <span class="function"><span class="keyword">function</span><span class="params">(elem, className)</span> </span>{</div><div class="line">  <span class="keyword">var</span> newClass = <span class="string">' '</span> + elem.className.replace(<span class="regexp">/[\t\r\n]/g</span>, <span class="string">' '</span>) + <span class="string">' '</span>;</div><div class="line">  <span class="keyword">if</span> (hasClass(elem, className)) {</div><div class="line">    <span class="keyword">while</span> (newClass.indexOf(<span class="string">' '</span> + className + <span class="string">' '</span>) &gt;= <span class="number">0</span>) {</div><div class="line">      newClass = newClass.replace(<span class="string">' '</span> + className + <span class="string">' '</span>, <span class="string">' '</span>);</div><div class="line">    }</div><div class="line">    elem.className = newClass.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>改进后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> width = b.width();</div><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="comment">//do something</span></div><div class="line">});</div></pre></td></tr></table></figure>
 
+<p>尽量不要在事件处理方法内加入耗时操作，能移到外部处理的尽量移到外部，内部只放核心逻辑代码。</p>
+<p><strong>不要在监听处理方法内再放入其它监听</strong><br>这甚至不是一个低效的写法，而直接是一个<strong>完全错误</strong>的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">	<span class="comment">//do something</span></div><div class="line">	a.mousedown(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">		<span class="comment">//do something</span></div><div class="line">	});</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>这样会导致每次触发<code>mousemove</code>时，都会额外给a元素再绑定一个<code>mousedown</code>处理事件，这样的代码简直是灾难。</p>
+<p>正确的做法应该是这样:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _isDown = <span class="literal">false</span>;_</div><div class="line">a.mousemove(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">if</span>(_isDown){</div><div class="line">        <span class="comment">//do something</span></div><div class="line">    }</div><div class="line">});</div><div class="line">a.mousedown(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    _isDown = <span class="literal">true</span>;</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>利用一个参数来传递状态，尽量不要为一个元素的某个事件绑定多个处理方法。</p>
 
       
     </div>
@@ -81,7 +93,7 @@ addClass
         
   
   <div class="categories">
-    <a href="/categories/前端开发/">前端开发</a>
+    <a href="/categories/JavaScript代码规范/">JavaScript代码规范</a>
   </div>
 
         
@@ -110,7 +122,7 @@ addClass
 <section id="comment">
   <h1 class="title">留言</h1>
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="使用原生JavaScript实现addClass和removeClass" data-title="使用原生JavaScript实现addClass和removeClass" data-url="http://pengpeiqiao.tk/2014/10/08/addClass-removeClass-without-jQuery/"></div>
+  <div class="ds-thread" data-thread-key="JavaScript代码规范(一):事件监听" data-title="JavaScript代码规范(一):事件监听" data-url="http://pengpeiqiao.tk/2014/10/21/javascript-priceple-1/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
