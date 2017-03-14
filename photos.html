@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>photos</title>
+  <style>
+    body, html {
+      font-size: 0;
+    }
+    ul, li {
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/SvalbardSatellite_ZH-CN11710008487_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/SuffragetteMuralNZ_ZH-CN11170622518_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/WatchtowerSky_ZH-CN8532519791_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/SteepSheep_ZH-CN8716398488_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/ButterflyWorld_ZH-CN11273971874_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/Aoraki_ZH-CN7776353328_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/SpringbokHerd_ZH-CN11603112082_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/Shiprock_ZH-CN11237156651_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/HoliMunich_ZH-CN12353152381_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/PlungeDiving_ZH-CN11143756334_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/BlanchardSprings_ZH-CN10814394195_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg"></li>
+    <li><img src="http://cn.bing.com/az/hprichbg/rb/EnhancedPinus_ZH-CN11908142325_1920x1080.jpg"></li>
+  </ul>
+
+  <script>
+    window.onload = function () {
+      var width = document.body.offsetWidth / 3;
+      [].slice.call(document.querySelectorAll('li')).forEach(function(li){
+        li.style.width = width + 'px';
+      })
+    }
+  </script>
+</body>
+</html>
