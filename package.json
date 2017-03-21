@@ -1,0 +1,23 @@
+{
+  "name": "ppq1991.github.com",
+  "version": "0.0.1",
+  "description": "my web site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppq1991/ppq1991.github.com.git"
+  },
+  "author": "ppq1991",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ppq1991/ppq1991.github.com/issues"
+  },
+  "homepage": "https://github.com/ppq1991/ppq1991.github.com#readme",
+  "dependencies": {
+    "axios": "^0.15.3"
+  }
+}
