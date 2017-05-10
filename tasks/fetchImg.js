@@ -40,7 +40,7 @@ exports.run = function () {
     return data.images;
   }).then(imgs => {
     const html = fs.readFileSync('./photos.html', { encoding: 'utf8' });
-    const ul = '<ul>\n' + imgs.map(url => `    <li><img src="${url}"></li>\n`).join('') + '  </ul>';
+    const ul = '<ul>\n' + imgs.map(url => `    <li><img x-src="${url}"></li>\n`).join('') + '  </ul>';
     const newHtml = html.replace(/<ul>[^]*<\/ul>/i, ul);
 
     fs.writeFileSync('./photos.html', newHtml);
