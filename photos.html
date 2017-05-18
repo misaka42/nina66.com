@@ -136,6 +136,7 @@
         document.body.scrollTop = document.body.scrollHeight;
         callback();
       }
+      image.onerror = callback;
       image.src = img.getAttribute('x-src');
     }
   </script>
