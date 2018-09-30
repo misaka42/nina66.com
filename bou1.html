@@ -30,7 +30,7 @@
     function start () {
       const phoneNumbers = String($text.value).split(/\s/).filter(v => !!v);
       const filters = String($filter.value).split(/\s/).filter(v => !!v);
-      const results = phoneNumbers.filter(n => filters.some(f => new RegExp('^' + f).test(n)));
+      const results = phoneNumbers.filter(n => filters.some(f => n.startsWith(f)));
       $result.value = results.join('\n');
     }
 
