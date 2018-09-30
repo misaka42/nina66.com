@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bou 1</title>
+</head>
+<body>
+  <h1>胖胖熊手机号提取器 V1.0</h1>
+  <small>build with ❤️ by ppq</small>
+  <hr>
+  <p>在下面贴入原始手机号，用回车或者空格分割</p>
+  <textarea name="text" id="text" cols="100" rows="10"></textarea>
+  <hr>
+  <p>在下面贴入本次要过滤的号段，用空格分割（如 133 134 135 144）</p>
+  <textarea name="filter" id="filter" cols="100" rows="3"></textarea>
+  <hr>
+  <button id="start">开始过滤</button>
+  <hr>
+  <p>过滤结果</p>
+  <textarea name="result" id="result" cols="100" rows="10"></textarea>
+
+  <script>
+    const $text = document.getElementById('text');
+    const $filter = document.getElementById('filter');
+    const $start = document.getElementById('start');
+    const $result = document.getElementById('result');
+
+    function start () {
+      const phoneNumbers = String($text.value).split(/\s/).filter(v => !!v);
+      const filters = String($filter.value).split(/\s/).filter(v => !!v);
+      const results = phoneNumbers.filter(n => filters.some(f => new RegExp('^' + f).test(n)));
+      $result.value = results.join('\n');
+    }
+
+    $start.addEventListener('click', start);
+  </script>
+</body>
+</html>
