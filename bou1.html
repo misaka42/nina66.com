@@ -7,7 +7,7 @@
   <title>bou 1</title>
 </head>
 <body>
-  <h1>胖胖熊手机号提取器 V2.0</h1>
+  <h1>胖胖熊手机号提取器 V2.1</h1>
   <small>build with ❤️ by ppq</small>
   <hr>
   <p>在下面贴入原始数据</p>
@@ -30,14 +30,15 @@
     function start () {
       const lines = String($text.value).split('\n').filter(v => !!v);
       const filters = String($filter.value).split(/\s/).filter(v => !!v);
-      const results = lines.filter(n => filters.some(f => isMatch(n, f)));
+      const results = lines.filter(n => isFilter(n, filters));
       $result.value = results.join('\n');
     }
 
-    function isMatch (str, filter) {
-      const match = str.match(/\s\d{11}\s/);
+    function isFilter (line, filters) {
+      const match = line.match(/\s\d{11}\s/);
       if (match && match[0]) {
-        return String(match[0]).trim().startsWith(filter);
+        const phone = String(match[0]).trim();
+        return filters.some(f => phone.startsWith(f));
       }
       return false;
     }
