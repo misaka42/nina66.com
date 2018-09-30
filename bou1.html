@@ -7,10 +7,10 @@
   <title>bou 1</title>
 </head>
 <body>
-  <h1>胖胖熊手机号提取器 V1.0</h1>
+  <h1>胖胖熊手机号提取器 V2.0</h1>
   <small>build with ❤️ by ppq</small>
   <hr>
-  <p>在下面贴入原始手机号，用回车或者空格分割</p>
+  <p>在下面贴入原始数据</p>
   <textarea name="text" id="text" cols="100" rows="10"></textarea>
   <hr>
   <p>在下面贴入本次要过滤的号段，用空格分割（如 133 134 135 144）</p>
@@ -28,10 +28,18 @@
     const $result = document.getElementById('result');
 
     function start () {
-      const phoneNumbers = String($text.value).split(/\s/).filter(v => !!v);
+      const lines = String($text.value).split('\n').filter(v => !!v);
       const filters = String($filter.value).split(/\s/).filter(v => !!v);
-      const results = phoneNumbers.filter(n => filters.some(f => n.startsWith(f)));
+      const results = lines.filter(n => filters.some(f => isMatch(n, f)));
       $result.value = results.join('\n');
+    }
+
+    function isMatch (str, filter) {
+      const match = str.match(/\s\d{11}\s/);
+      if (match && match[0]) {
+        return String(match[0]).trim().startsWith(filter);
+      }
+      return false;
     }
 
     $start.addEventListener('click', start);
