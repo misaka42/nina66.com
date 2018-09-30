@@ -7,7 +7,7 @@
   <title>bou 1</title>
 </head>
 <body>
-  <h1>胖胖熊手机号提取器 V2.1</h1>
+  <h1>胖胖熊手机号提取器 V2.2</h1>
   <small>build with ❤️ by ppq</small>
   <hr>
   <p>在下面贴入原始数据</p>
@@ -28,8 +28,8 @@
     const $result = document.getElementById('result');
 
     function start () {
-      const lines = String($text.value).split('\n').filter(v => !!v);
-      const filters = String($filter.value).split(/\s/).filter(v => !!v);
+      const lines = String($text.value).split('\n').filter(v => !!v).map(s => String(s).trim());
+      const filters = String($filter.value).split(/\s/).filter(v => !!v).map(s => String(s).trim());
       const results = lines.filter(n => isFilter(n, filters));
       $result.value = results.join('\n');
     }
