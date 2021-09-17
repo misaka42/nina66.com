@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wechat</title>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  </head>
+  <body>
+    <script>
+      const queries = {};
+      new URLSearchParams(window.location.search).forEach((val, key) => {
+        queries[key] = val;
+      });
+      log('[queries]', queries);
+
+      function log(...args) {
+        const div = document.createElement('div');
+        div.innerHTML = `<p>${new Date().toLocaleString()}</p><pre>${JSON.stringify(
+          args,
+          null,
+          4,
+        )}</pre>`;
+        document.body.appendChild(div);
+      }
+
+      wx.config({
+        debug: true,
+        ...queries,
+        jsApiList: ['checkJsApi', 'chooseImage'],
+      });
+
+      wx.ready(function () {
+        log('ready !!');
+        wx.checkJsApi({
+          jsApiList: ['chooseImage'],
+          success: function (res) {
+            log('[checkJsApi]', res);
+          },
+        });
+      });
+
+      wx.error(function (res) {
+        log('error', res);
+      });
+
+      log('init');
+    </script>
+  </body>
+</html>
